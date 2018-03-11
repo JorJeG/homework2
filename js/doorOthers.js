@@ -70,17 +70,13 @@ function Door1(number, onUnlock) {
     var width = this.popup.getBoundingClientRect().width;
     var height = this.popup.getBoundingClientRect().height;
 
-    var buttons = [
-        this.popup.querySelector('.door-riddle__button_3'),
-    ];
+    var button = this.popup.querySelector('.door-riddle__button_3');
 
-    buttons.forEach(function(b) {
-        b.addEventListener('pointerdown', _onButtonPointerDown.bind(this));
-        b.addEventListener('pointerup', _onButtonPointerUp.bind(this));
-        b.addEventListener('pointercancel', _onButtonPointerUp.bind(this));
-        b.addEventListener('pointerleave', _onButtonPointerUp.bind(this));
-        b.addEventListener('pointermove', _onButtonPointerMove.bind(this));
-    }.bind(this));
+    button.addEventListener('pointerdown', _onButtonPointerDown.bind(this));
+    button.addEventListener('pointerup', _onButtonPointerUp.bind(this));
+    button.addEventListener('pointercancel', _onButtonPointerUp.bind(this));
+    button.addEventListener('pointerleave', _onButtonPointerUp.bind(this));
+    button.addEventListener('pointermove', _onButtonPointerMove.bind(this));
 
     function _onButtonPointerDown(e) {
         e.target.classList.add('door-riddle__button_pressed');
@@ -229,16 +225,12 @@ function Box(number, onUnlock) {
     var size = 64;
 
     // ==== Напишите свой код для открытия сундука здесь ====
-    var buttons = [
-        this.popup.querySelector('.door-riddle__button_6')
-    ];
+    var button = this.popup.querySelector('.door-riddle__button_6');
 
-    buttons.forEach(function(b) {
-        b.addEventListener('pointerdown', _onButtonPointerDown.bind(this));
-        b.addEventListener('pointerup', _onButtonPointerUp.bind(this));
-        b.addEventListener('pointercancel', _onButtonPointerUp.bind(this));
-        b.addEventListener('pointerleave', _onButtonPointerUp.bind(this));
-    }.bind(this));
+    button.addEventListener('pointerdown', _onButtonPointerDown.bind(this));
+    button.addEventListener('pointerup', _onButtonPointerUp.bind(this));
+    button.addEventListener('pointercancel', _onButtonPointerUp.bind(this));
+    button.addEventListener('pointerleave', _onButtonPointerUp.bind(this));
 
     function _onButtonPointerDown(e) {
         e.target.classList.add('door-riddle__button_pressed');
@@ -251,7 +243,7 @@ function Box(number, onUnlock) {
         e.target.classList.remove('door-riddle__button_pressed');
         isGestureStarted = false;
         e.target.releasePointerCapture(e.pointerId);
-        buttons[0].style.cssText = 'width: 64px; height: 64px;';
+        button.style.cssText = 'width: 64px; height: 64px;';
         size = 64;
     }
 
@@ -274,7 +266,7 @@ function Box(number, onUnlock) {
      */
     function tick() {
         if (isGestureStarted) {
-            buttons[0].style.cssText = 'width: ' + size + 'px; height: ' + size + 'px; background-color: rgba(255, 255, 255, 0.4);';
+            button.style.cssText = 'width: ' + size + 'px; height: ' + size + 'px; background-color: rgba(255, 255, 255, 0.4);';
             size += 5;
         } else {
             clearInterval(timerId);
